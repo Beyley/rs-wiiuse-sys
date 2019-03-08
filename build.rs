@@ -42,6 +42,10 @@ fn compile(root: &str) {
 
     println!("cargo:rustc-link-search=native={}/build/src", dst.display());
     println!("cargo:rustc-link-lib=static=wiiuse");
+
+    if cfg!(target_os = "linux") {
+        println!("cargo:rustc-link-lib=bluetooth");        
+    }
 }
 
 fn gen_bindings(root: &str) {
